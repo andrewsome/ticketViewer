@@ -5,31 +5,39 @@ import '../App.css';
 import axios from 'axios';
 import cogoToast from 'cogo-toast';
 import moment from 'moment'
+import queyrString from 'query-string'
 
 class Listing extends Component {
   state = {
     loading: false,
     tickets: [],
-    currentPage: 0
+    currentPage: 1,
+    limit: 20,
+    totalRows: null
   }
 
   componentWillMount() {
+    //get query string
+    const parsed = queyrString.parse(this.props.location.search);
+
+    this.setState({
+      currentPage: parsed.page
+        ? parseInt(parsed.page)
+        : 1,
+      limit: parsed.limit
+        ? parseInt(parsed.limit)
+        : 20
+    }, () => this.fetchTickets())
+
+  }
+
+  fetchTickets = () => {
     this.setState({loading: true})
-    const currentPageFromStorage = sessionStorage.getItem("currentPage");
-    if (currentPageFromStorage) {
-      this.setState({currentPage: currentPageFromStorage});
-    }
-    const ticketsFromSessionStorage = sessionStorage.getItem("tickets");
-    if (ticketsFromSessionStorage) {
-      const tickets = JSON.parse(ticketsFromSessionStorage);
-      this.setState({tickets: tickets, loading: false});
-      return;
-    }
+    const {currentPage, limit} = this.state;
     axios
-      .get('/api/ticket/listing')
+      .get(`/api/ticket/listing?page=${currentPage}&limit=${limit}`)
       .then(response => {
-        sessionStorage.setItem("tickets", JSON.stringify(response.data.tickets));
-        this.setState({tickets: response.data.tickets, loading: false});
+        this.setState({tickets: response.data.tickets, loading: false, totalRows: response.data.count});
       })
       .catch(error => {
         this.setState({loading: false});
@@ -38,12 +46,35 @@ class Listing extends Component {
   }
 
   changePage = (index) => {
-    this.setState({currentPage: index});
-    sessionStorage.setItem("currentPage", index);
+    this.setState({
+      currentPage: index
+    }, () => this.fetchTickets());
+    const {limit} = this.state;
+    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + `?page=${index}&limit=${limit}`;
+    window
+      .history
+      .pushState({
+        path: newurl
+      }, '', newurl);
+  }
+
+  changePageSize = (limit) => {
+    this.setState({
+      currentPage: 1,
+      limit: limit
+    }, () => this.fetchTickets());
+    const {currentPage} = this.state;
+    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + `?page=${currentPage}&limit=${limit}`;
+    window
+      .history
+      .pushState({
+        path: newurl
+      }, '', newurl);
   }
 
   render() {
-    const {loading, tickets, currentPage} = this.state;
+    const {loading, tickets, currentPage, totalRows, limit} = this.state;
+    const totalPages = Math.ceil(totalRows / limit);
     return (
       <div className="container">
         <h1>Ticket Viewer</h1>
@@ -51,12 +82,19 @@ class Listing extends Component {
           data={tickets}
           loading={loading}
           className="-striped -highlight pointer"
-          page={currentPage}
-          onPageChange={index => this.changePage(index)}
+          page={currentPage - 1}
+          pageSize={limit}
+          onPageChange={index => this.changePage(index + 1)}
+          onPageSizeChange={limit => this.changePageSize(limit)}
+          pages={totalPages}
           noDataText="No ticket found"
+          manual
           getTrProps={(state, rowInfo) => ({
-            onClick: () => this.props.history.push(`/detail/${rowInfo.row.id}`)
-          })}
+          onClick: () => this
+            .props
+            .history
+            .push(`/detail/${rowInfo.row.id}`)
+        })}
           columns={[
           {
             Header: "Id",
