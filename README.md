@@ -4,8 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Getting started
 
 ### Prerequisites
-1. Node: any version starting with 8.4.0 or greater<br>
-[NodeJs](http://nodejs.org/) : suggest to install via [Node Version Manager NVM](https://github.com/creationix/nvm)<br>
+1. Node: any version starting with 8.4.0 or greater
+  - run `node --version` to check current node version
+  - If you need to upgrade or install [NodeJs](http://nodejs.org/) : suggest to install via [Node Version Manager NVM](https://github.com/creationix/nvm)
+
 2. A clone or download of this repo on your local machine
 
 ### Installation
