@@ -20,58 +20,27 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 1. make sure to run `npm run dev` first and keep the server running
 2. `npm run test-e2e` to lauch the test
 
-## Learn More
+## Implementation details
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+I want to make it possible to run one command and then run the React app and an Express server at the same time.  This implementation was referenced to [Set up a React app with a Node.js server proxy
+](https://www.twilio.com/blog/react-app-with-node-js-server-proxy).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+All config variables are stored in `server/config.json` file. It should be added to `.gitignore` because we don't want to share username and password. However, for demo purpose, we have created a trial account which only lasts for 14 days. So to make installation easier, we dont't git ignore the config.json file.
 
 
 
-https://www.twilio.com/blog/react-app-with-node-js-server-proxy
+References: 
 
-https://codeburst.io/node-js-best-practices-smarter-ways-to-manage-config-files-and-variables-893eef56cbef
-The following code will accomplish the same task of logging the URL to and of explaining the astronomy picture of the day:
-https://www.twilio.com/blog/2017/08/http-requests-in-node-js.html
+1. [Make HTTP Requests in Node.js](https://www.twilio.com/blog/2017/08/http-requests-in-node-js.html)
+2. [React Router](https://reacttraining.com/react-router/web/example/basic)
+3. [React Router params](https://scotch.io/courses/using-react-router-4/route-params)
+4. [React Router V4 How to go back](https://stackoverflow.com/questions/46681387/react-router-v4-how-to-go-back)
+5. [How to parse query string](https://stackoverflow.com/questions/43216569/how-to-get-query-parameters-in-react-router-v4)
+6. [query-string](https://github.com/sindresorhus/query-string)
+7. [react-table server side data](https://codesandbox.io/s/github/tannerlinsley/react-table/tree/master/archives/v6-examples/react-table-server-side-data)
+8. [React-table](https://github.com/tannerlinsley/react-table/tree/v6#props)
+9. [React modifies query string without reloading](https://stackoverflow.com/questions/10970078/modifying-a-query-string-without-reloading-the-page)
 
-https://knowbody.github.io/react-router-docs/api/Link.html
+## Test with Cypress
+We use [Cypress](https://www.cypress.io/) for end-to-end tests. 
 
-https://reacttraining.com/react-router/web/example/basic
-
-https://scotch.io/courses/using-react-router-4/route-params
-
-https://stackoverflow.com/questions/46681387/react-router-v4-how-to-go-back
-
-https://www.cypress.io/
-
-https://docs.cypress.io/guides/getting-started/testing-your-app.html#Logging-in
-
-https://stackoverflow.com/questions/48915773/cypress-test-if-element-does-not-exist
-
-https://medium.com/@anmolmahatpurkar/cogotoast-a-minimal-3-kb-toast-component-built-with-react-in-2018-9f75f8e059da
-
-https://github.com/Cogoport/cogo-toast

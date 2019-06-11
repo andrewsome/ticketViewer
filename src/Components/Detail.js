@@ -35,7 +35,7 @@ class Detail extends Component {
     const {loading, ticket} = this.state;
     if (loading) {
       return (
-        <div className="center">Loading</div>
+        <div className="center">Loading...</div>
       );
     }
     return (ticket
