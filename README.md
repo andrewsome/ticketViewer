@@ -26,8 +26,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 I want to make it possible to run one command and then run the React app and an Express server at the same time.  This implementation was referenced to [Set up a React app with a Node.js server proxy
 ](https://www.twilio.com/blog/react-app-with-node-js-server-proxy).
 
-All config variables are stored in `server/config.json` file. It should be added to `.gitignore` because we don't want to share username and password. However, for demo purpose, we have created a trial account which only lasts for 14 days. So to make installation easier, we dont't git ignore the config.json file.
+All config variables are stored in `server/config.json` file. It should be added to `.gitignore` because we don't want to share username and password. However, for demo purpose, I have created a trial account which only lasts for 14 days. So to make installation easier, I haven't git ignore the config.json file.
 
+![example](http://g.recordit.co/Y71neoHXU8.gif)
 
 
 Other references: 
@@ -43,5 +44,7 @@ Other references:
 9. [React modifies query string without reloading](https://stackoverflow.com/questions/10970078/modifying-a-query-string-without-reloading-the-page)
 
 ## Test with Cypress
-We use [Cypress](https://www.cypress.io/) for end-to-end tests. 
+I use [Cypress](https://www.cypress.io/) for end-to-end tests. 
+
+![example](http://g.recordit.co/n0MeKvwKll.gif)
 
