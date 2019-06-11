@@ -12,7 +12,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Installation
 1. `cd ticketViewer` to go into the project root
-2. `npm install`to intall the npm dependencies
+2. `npm install`to install the npm dependencies
 
 ### Running locally
 1. `npm run dev` to start
