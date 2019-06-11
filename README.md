@@ -4,8 +4,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Getting started
 
 ### Prerequisites
-1. Node: any 8.x version starting with 8.4.0 or greater
-2. A clone of this repo on your local machine
+1. Node: any version starting with 8.4.0 or greater<br>
+[NodeJs](http://nodejs.org/) : suggest to install via [Node Version Manager NVM](https://github.com/creationix/nvm)<br>
+2. A clone or download of this repo on your local machine
 
 ### Installation
 1. `cd ticketViewer` to go into the project root
@@ -29,7 +30,7 @@ All config variables are stored in `server/config.json` file. It should be added
 
 
 
-References: 
+Other references: 
 
 1. [Make HTTP Requests in Node.js](https://www.twilio.com/blog/2017/08/http-requests-in-node-js.html)
 2. [React Router](https://reacttraining.com/react-router/web/example/basic)
